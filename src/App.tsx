@@ -1,4 +1,4 @@
-import { useId, useMemo, useReducer, useState } from 'react'
+import { useEffect, useId, useMemo, useReducer, useRef, useState } from 'react'
 import {
   Alignment,
   DrawOptimizationOptions,
@@ -13,6 +13,18 @@ import riveFiles, { type RiveManifestEntry } from 'virtual:rive-manifest'
 import './App.css'
 
 const numberInputStep = 1
+const visibleActivationThreshold = 0.25
+const activationStaggerMs = 300
+const hiddenArtboardNames = new Set([
+  'ARLYS',
+  'Avatar 1',
+  'Avatar 2',
+  'Avatar 3',
+  'BOBBY',
+  'Microphone',
+])
+
+let nextActivationTime = 0
 
 type ArtboardMeta = RiveManifestEntry['artboards'][number]
 type StateMachineMeta = ArtboardMeta['stateMachines'][number]
@@ -46,13 +58,24 @@ function updateRuntimeInputValue(
   }
 }
 
+function scheduleAnimationActivation(activate: () => void) {
+  const now = window.performance.now()
+  const delay = Math.max(0, nextActivationTime - now)
+  nextActivationTime = now + delay + activationStaggerMs
+  const timeout = window.setTimeout(activate, delay)
+
+  return () => window.clearTimeout(timeout)
+}
+
 function getGalleryItems(files: RiveManifestEntry[]) {
   return files.flatMap((file) =>
-    file.artboards.map((artboard, artboardIndex) => ({
-      artboard,
-      artboardIndex,
-      file,
-    })),
+    file.artboards
+      .map((artboard, artboardIndex) => ({
+        artboard,
+        artboardIndex,
+        file,
+      }))
+      .filter((item) => !hiddenArtboardNames.has(item.artboard.name)),
   )
 }
 
@@ -98,6 +121,7 @@ function App() {
 }
 
 function RiveArtboardCard({ item }: { item: GalleryItem }) {
+  const cardRef = useRef<HTMLElement | null>(null)
   const [isActivated, setIsActivated] = useState(false)
   const stateMachineNames = useMemo(
     () => item.artboard.stateMachines.map((stateMachine) => stateMachine.name),
@@ -129,8 +153,41 @@ function RiveArtboardCard({ item }: { item: GalleryItem }) {
     },
   )
 
+  useEffect(() => {
+    if (isActivated) {
+      return
+    }
+
+    const card = cardRef.current
+
+    if (!card) {
+      return
+    }
+
+    if (typeof window.IntersectionObserver === 'undefined') {
+      return scheduleAnimationActivation(() => setIsActivated(true))
+    }
+
+    let cancelActivation: (() => void) | undefined
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        cancelActivation = scheduleAnimationActivation(() => {
+          setIsActivated(true)
+        })
+        observer.disconnect()
+      }
+    }, { threshold: visibleActivationThreshold })
+
+    observer.observe(card)
+
+    return () => {
+      observer.disconnect()
+      cancelActivation?.()
+    }
+  }, [isActivated])
+
   return (
-    <article className="animation-card">
+    <article className="animation-card" ref={cardRef}>
       <div className="animation-stage">
         {isActivated ? (
           <RiveComponent
@@ -153,7 +210,6 @@ function RiveArtboardCard({ item }: { item: GalleryItem }) {
       <div className="animation-details">
         <header className="card-header">
           <div>
-            <p className="file-name">{item.file.fileName}</p>
             <h2>{item.artboard.name}</h2>
           </div>
           <span className="runtime-status">
@@ -189,7 +245,6 @@ function StateMachineControls({
     <div className="control-groups">
       {controllableStateMachines.map((stateMachine) => (
         <section className="control-group" key={stateMachine.name}>
-          <h3>{stateMachine.name}</h3>
           <div className="control-list">
             {stateMachine.inputs.map((input) => (
               <InputControl
