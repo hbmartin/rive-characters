@@ -2,45 +2,13 @@
 
 This app displays every Rive artboard found in `public/*.riv` as a vertical gallery. Each card shows the source file, artboard name, state-machine controls, and a `Load animation` button that initializes that specific Rive canvas on demand.
 
+All animations sourced from [Rive Marketplace](https://rive.app/marketplace) under their respective licenses.
+
 ## Requirements
 
 - Node.js 24 or newer is recommended for this project.
 - pnpm is recommended because the repo includes `pnpm-lock.yaml`.
 - A modern browser with WebAssembly support.
-
-## Install
-
-From the project root:
-
-```bash
-pnpm install
-```
-
-If you prefer npm, this also works:
-
-```bash
-npm install
-```
-
-## Run Locally
-
-Start the Vite dev server:
-
-```bash
-pnpm dev
-```
-
-Open the local URL printed by Vite, usually:
-
-```text
-http://localhost:5173/
-```
-
-To bind the server to localhost explicitly:
-
-```bash
-pnpm dev -- --host 127.0.0.1
-```
 
 ## Use The Gallery
 
@@ -81,14 +49,6 @@ Preview the production build:
 pnpm preview
 ```
 
-## Lint
-
-Run ESLint:
-
-```bash
-pnpm lint
-```
-
 ## Runtime Notes
 
 - Visible animations use `@rive-app/react-canvas`.
@@ -96,16 +56,6 @@ pnpm lint
 - Some very complex `.riv` files can be expensive to initialize. Keep the on-demand loading behavior unless you have tested that eager loading is stable for your asset set.
 - If an animation does not expose state-machine inputs, its card shows `No state-machine inputs`.
 
-## Project Structure
-
-```text
-public/                 Rive files and static assets
-src/App.tsx             Gallery UI, Rive cards, and input controls
-src/App.css             Gallery-specific styles
-src/index.css           Global theme and reset styles
-src/vite-env.d.ts       Type declaration for the virtual Rive manifest
-vite.config.ts          Vite config and Rive manifest plugin
-```
 
 ## Troubleshooting
 
@@ -113,3 +63,11 @@ vite.config.ts          Vite config and Rive manifest plugin
 - If controls are missing for a card, inspect the Rive file and confirm the selected artboard has state-machine inputs.
 - If the browser slows down after loading an animation, refresh the page and load fewer animations at once.
 - If the build fails while reading a `.riv` file, check that the file is valid and can be opened in Rive.
+
+## See also
+
+- https://github.com/rive-app/awesome-rive
+- https://blog.duolingo.com/world-character-visemes/
+- https://tympanus.net/codrops/2025/05/12/integrating-rive-into-a-react-project-behind-the-scenes-of-valley-adventures/
+- https://marmelab.com/blog/2023/01/30/rive-animation-state-machine.html
+- https://rive.app/docs/runtimes/react/playing-audio

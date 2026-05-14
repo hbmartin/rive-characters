@@ -1,292 +1,291 @@
 .app-shell {
-  width: min(100%, 1120px);
-  margin: 0 auto;
-  padding: 40px 24px 72px;
-  box-sizing: border-box;
+	width: min(100%, 1120px);
+	margin: 0 auto;
+	padding: 40px 24px 72px;
+	box-sizing: border-box;
 }
 
 .gallery-header {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  align-items: flex-end;
-  margin-bottom: 28px;
-  text-align: left;
+	display: flex;
+	justify-content: space-between;
+	gap: 24px;
+	align-items: flex-end;
+	margin-bottom: 28px;
+	text-align: left;
 }
 
 .eyebrow {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.3;
-  color: var(--muted);
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.3;
+	color: var(--muted);
 }
 
 .eyebrow {
-  text-transform: uppercase;
-  font-weight: 700;
+	font-weight: 700;
 }
 
 .gallery-header h1 {
-  margin: 8px 0 0;
+	margin: 8px 0 0;
 }
 
 .gallery-counts {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	justify-content: flex-end;
 }
 
 .gallery-counts span,
 .runtime-status {
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  color: var(--text-h);
-  background: var(--surface);
-  font-size: 13px;
-  line-height: 1;
-  white-space: nowrap;
+	display: inline-flex;
+	align-items: center;
+	min-height: 30px;
+	padding: 4px 10px;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	color: var(--text-h);
+	background: var(--surface);
+	font-size: 13px;
+	line-height: 1;
+	white-space: nowrap;
 }
 
 .load-errors,
 .gallery-state {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--surface);
 }
 
 .load-errors {
-  display: grid;
-  gap: 8px;
-  margin-bottom: 20px;
-  padding: 16px;
-  text-align: left;
+	display: grid;
+	gap: 8px;
+	margin-bottom: 20px;
+	padding: 16px;
+	text-align: left;
 }
 
 .load-errors p {
-  color: var(--danger);
+	color: var(--danger);
 }
 
 .gallery-state {
-  padding: 28px;
-  color: var(--muted);
+	padding: 28px;
+	color: var(--muted);
 }
 
 .gallery-list {
-  display: grid;
-  gap: 24px;
+	display: grid;
+	gap: 24px;
 }
 
 .animation-card {
-  display: grid;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  box-shadow: var(--shadow);
+	display: grid;
+	overflow: hidden;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--surface);
+	box-shadow: var(--shadow);
 }
 
 .animation-stage {
-  position: relative;
-  width: 100%;
-  min-height: 320px;
-  aspect-ratio: 16 / 9;
-  background:
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(0deg, var(--grid-line) 1px, transparent 1px),
-    var(--stage-bg);
-  background-size: 28px 28px;
+	position: relative;
+	width: 100%;
+	min-height: 320px;
+	aspect-ratio: 16 / 9;
+	background:
+		linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+		linear-gradient(0deg, var(--grid-line) 1px, transparent 1px),
+		var(--stage-bg);
+	background-size: 28px 28px;
 }
 
 .rive-canvas {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .rive-canvas canvas {
-  width: 100% !important;
-  height: 100% !important;
+	width: 100% !important;
+	height: 100% !important;
 }
 
 .stage-placeholder {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  place-items: center;
-  color: var(--muted);
-  font-size: 14px;
+	display: grid;
+	width: 100%;
+	height: 100%;
+	place-items: center;
+	color: var(--muted);
+	font-size: 14px;
 }
 
 .stage-load-button {
-  min-height: 40px;
-  padding: 8px 14px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text-h);
-  background: var(--surface);
-  box-shadow: var(--shadow);
-  cursor: pointer;
+	min-height: 40px;
+	padding: 8px 14px;
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	color: var(--text-h);
+	background: var(--surface);
+	box-shadow: var(--shadow);
+	cursor: pointer;
 }
 
 .stage-load-button:hover {
-  border-color: var(--accent);
+	border-color: var(--accent);
 }
 
 .animation-details {
-  display: grid;
-  gap: 20px;
-  padding: 20px;
-  border-top: 1px solid var(--border);
-  text-align: left;
+	display: grid;
+	gap: 20px;
+	padding: 20px;
+	border-top: 1px solid var(--border);
+	text-align: left;
 }
 
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 18px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 18px;
 }
 
 .control-groups {
-  display: grid;
-  gap: 14px;
+	display: grid;
+	gap: 14px;
 }
 
 .control-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
 }
 
 .control-button,
 .number-control-row button,
 .number-control-row input {
-  min-height: 38px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text-h);
-  background: var(--control-bg);
-  font: inherit;
+	min-height: 38px;
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	color: var(--text-h);
+	background: var(--control-bg);
+	font: inherit;
 }
 
 .control-button,
 .number-control-row button {
-  cursor: pointer;
-  transition:
-    border-color 160ms ease,
-    background 160ms ease,
-    transform 160ms ease;
+	cursor: pointer;
+	transition:
+		border-color 160ms ease,
+		background 160ms ease,
+		transform 160ms ease;
 }
 
 .control-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 7px 12px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 7px 12px;
 }
 
 .trigger-button:hover,
 .number-control-row button:hover,
 .toggle-button:hover {
-  border-color: var(--accent);
+	border-color: var(--accent);
 }
 
 .trigger-button:active,
 .number-control-row button:active,
 .toggle-button:active {
-  transform: translateY(1px);
+	transform: translateY(1px);
 }
 
 .toggle-button {
-  justify-content: space-between;
-  min-width: 154px;
+	justify-content: space-between;
+	min-width: 154px;
 }
 
 .toggle-button span:last-child {
-  color: var(--muted);
-  font-size: 13px;
+	color: var(--muted);
+	font-size: 13px;
 }
 
 .toggle-button.is-on {
-  border-color: var(--success-border);
-  background: var(--success-bg);
+	border-color: var(--success-border);
+	background: var(--success-bg);
 }
 
 .number-control {
-  display: grid;
-  gap: 6px;
-  min-width: 210px;
+	display: grid;
+	gap: 6px;
+	min-width: 210px;
 }
 
 .number-control label {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.2;
+	color: var(--muted);
+	font-size: 13px;
+	line-height: 1.2;
 }
 
 .number-control-row {
-  display: grid;
-  grid-template-columns: 38px minmax(92px, 1fr) 38px;
-  gap: 6px;
+	display: grid;
+	grid-template-columns: 38px minmax(92px, 1fr) 38px;
+	gap: 6px;
 }
 
 .number-control-row button {
-  padding: 0;
+	padding: 0;
 }
 
 .number-control-row input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 6px 10px;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 6px 10px;
 }
 
 .empty-controls,
 .unsupported-input {
-  color: var(--muted);
-  font-size: 14px;
+	color: var(--muted);
+	font-size: 14px;
 }
 
 button:disabled,
 input:disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
+	cursor: not-allowed;
+	opacity: 0.55;
 }
 
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
 }
 
 @media (max-width: 720px) {
-  .app-shell {
-    padding: 28px 14px 48px;
-  }
+	.app-shell {
+		padding: 28px 14px 48px;
+	}
 
-  .gallery-header,
-  .card-header {
-    align-items: stretch;
-    flex-direction: column;
-  }
+	.gallery-header,
+	.card-header {
+		align-items: stretch;
+		flex-direction: column;
+	}
 
-  .gallery-counts {
-    justify-content: flex-start;
-  }
+	.gallery-counts {
+		justify-content: flex-start;
+	}
 
-  .animation-stage {
-    min-height: 260px;
-  }
+	.animation-stage {
+		min-height: 260px;
+	}
 
-  .animation-details {
-    padding: 16px;
-  }
+	.animation-details {
+		padding: 16px;
+	}
 
-  .number-control {
-    width: 100%;
-  }
+	.number-control {
+		width: 100%;
+	}
 }
